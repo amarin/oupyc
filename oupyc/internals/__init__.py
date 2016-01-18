@@ -1,15 +1,17 @@
 # -*- coding: utf-8 -*-
+import logging
 
+_l = logging.getLogger(__name__)
+_l.setLevel(logging.DEBUG)
+debug, info, warning, error, critical = _l.debug, _l.info, _l.warning, _l.error,  _l.critical
 
 class NamedObject(object):
     """ Simple object having name """
 
     def __init__(self, **kwargs):
-        super(NamedObject, self).__init__()
-
+        #debug(kwargs)
         # define internal properties
         self.__name = None
-
         # init internal properties
         self.name = kwargs.get("name", "%s[%s]" % (self.__class__.__name__, id(self)))
 
